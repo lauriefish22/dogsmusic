@@ -5,7 +5,7 @@ const SUPABASE_KEY =
 const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 export async function getBands() {
-    const { data, error } = await client.from('band').select(`*, band_names (name)`);
+    const { data, error } = await client.from('bands').select('*');
 
     if (error) console.error(error);
 
