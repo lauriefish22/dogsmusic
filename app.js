@@ -8,18 +8,23 @@ const mainEl = document.querySelector('main');
 let bandsData = [];
 
 /* Events */
-window.addEventListener('load', () => {
+window.addEventListener('load', async () => {
     const bands = await getBands();
+
     bandsData = bands;
+    mainEl.textContent = '';
 
     for (let band of bandsData) {
-
         const bandEl = document.createElement('div');
-        
+        const bandNameEl = document.createElement('p');
+        const leadSingerEl = document.createElement('p');
+        const albumNameEl = document.createElement('p');
+
+        bandNameEl.textContent = band.name;
+        leadSingerEl.textContent = band.leadSinger;
+        albumNameEl.textContent = band.albumName;
+
+        bandEl.append(bandNameEl, leadSingerEl, albumNameEl);
+        mainEl.append(bandEl);
     }
-
 });
-
-/* Display Functions */
-
-// (don't forget to call any display functions you want to run on page load!)
